@@ -1,0 +1,87 @@
+<!--
+  Generated template for the AddBalanceExpensePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="expense; else otherTitle">Edit Expense</ion-title>
+    <ng-template #otherTitle>
+        <ion-title *ngIf="purpose=='Expense'; else otherPurpose">Add {{purpose}}</ion-title>
+        <ng-template #otherPurpose>
+            <ion-title>Add {{purpose}}</ion-title>
+        </ng-template>
+    </ng-template>
+    <!-- <button ion-button end><ion-icon name="trash"></ion-icon></button> -->
+    <ion-buttons end *ngIf="expense">
+      <button ion-button style="font-size: 2rem" (click)="deleteRecord()"><ion-icon name="trash"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-12 col-sm-12 col-md-6>
+        <form>
+          <ion-list>
+            <ion-item no-padding>
+              <ion-label floating>Amount</ion-label>
+              <ion-input type="number" name="amount" id="amount" [(ngModel)]="amount"></ion-input>
+            </ion-item>
+
+            <ion-row no-padding>
+              <ion-col col-5 no-padding>
+                  <ion-item no-padding>
+                    <ion-label floating>Date</ion-label>
+                    <ion-datetime no-padding name="date" displayFormat="DD/MMM/YYYY" (ngModelChange)="onChange($event)" [(ngModel)]="myDate"></ion-datetime>
+                  </ion-item>
+              </ion-col>
+
+              <ion-col col-2></ion-col>
+
+              <ion-col col-5 no-padding>
+                <div *ngIf="purpose=='Balance'; else otherCategories">
+                  <ion-item no-padding>
+                    <ion-label floating>Category</ion-label>
+                    <ion-input disabled type="text" name="balanceCategory" id="balanceCategory" [(ngModel)]="balanceCategory"class="balanceCategory"></ion-input>
+                  </ion-item>
+                </div>
+                <ng-template #otherCategories>
+                  <ion-label no-margin-bottom style="font-size: 1.34rem; margin-bottom: 0; color: #999;">Category</ion-label>
+                  <ion-select placeholder="Select" style="padding-left:0; padding-top:1rem" [(ngModel)]="selectCategory" name="selectCategory" text-capitalize>
+                      <ion-option *ngFor="let item of items | async" text-capitalize>
+                        {{item.$value}}
+                      </ion-option>
+                  </ion-select>
+                </ng-template>
+              </ion-col>
+            </ion-row>
+
+            <ion-item no-padding>
+              <ion-label floating>Description</ion-label>
+              <ion-textarea name="description" [(ngModel)]="description"></ion-textarea>
+            </ion-item>
+
+            <ion-row justify-content-end no-padding>
+              <ion-col col-4 no-padding>
+                <button ion-button block (click)="update()" *ngIf="expense; else elseBlock"
+                [disabled]="!amount || !description || !selectCategory">Update</button>
+                <ng-template #elseBlock>
+                    <button ion-button block (click)="save()" *ngIf="purpose=='Expense'; else otherButton"
+                    [disabled]="!amount || !description || !selectCategory">Save</button>
+                  <ng-template #otherButton>
+                    <button ion-button block (click)="saveBalance()" 
+                    [disabled]="!amount || !description || !balanceCategory">Save</button>
+                  </ng-template>
+                  <!-- <button ion-button block (click)="save()" [disabled]="!amount || !description || !selectCategory">Save</button> -->
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

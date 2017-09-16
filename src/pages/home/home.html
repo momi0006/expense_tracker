@@ -1,14 +1,36 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title padding hideWhen="ios">Expense Tracker</ion-title>
+    <ion-segment [(ngModel)]="tabName" color="white">
+      <ion-segment-button value="expenses" class="tabs">
+        EXPENSES
+      </ion-segment-button>
+      <ion-segment-button value="balance" class="tabs">
+        BALANCE
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div [ngSwitch]="tabName" >
+    <div *ngSwitchCase="'expenses'">
+        <expenses></expenses>
+    </div>
+    
+    <ion-list *ngSwitchCase="'balance'">
+      <div *ngSwitchCase="'balance'">
+        <balance></balance>
+      </div>
+    </ion-list>
+  </div>
 </ion-content>
+
+<ion-fab right bottom #fab>
+  <button ion-fab color="default"><ion-icon name="add"></ion-icon></button>
+  <ion-fab-list side="top">
+    <button ion-fab (click)="goToAddBalanceExpensePage('Expense', $event, fab)"><ion-icon name="cash"></ion-icon></button>
+    <button ion-fab (click)="goToAddBalanceExpensePage('Balance', $event, fab)"><ion-icon name="logo-usd"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab>
+

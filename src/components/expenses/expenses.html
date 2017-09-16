@@ -1,0 +1,33 @@
+<ion-grid>
+  <ion-row justify-content-center>
+    <ion-col col-12 col-sm-12 col-md-8>
+      <ion-list>
+        <ion-item no-padding class="text" *ngFor="let item of items1 | async" (click)="onExpenseClick(item.$key)">
+          <ion-row>
+            <ion-col col-8>
+              <label class="desc"><b>{{item.description}}</b></label><br>
+              <label>{{item.date | date:'EEE, MMM d, y'}}</label><br>
+              <p>{{item.category}}</p>
+            </ion-col>
+            <ion-col col-4 text-right class="currency">
+              <label class="amount"><b>{{item.amount | currency:'CAD':true}}</b></label>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item no-padding class="text" *ngFor="let item of items2 | async" (click)="onBalanceClick(item.$key)">
+          <ion-row>
+            <ion-col col-8>
+              <label style="font-size:2rem"><b>{{item.description}}</b></label><br>
+              <label>{{item.date | date:'EEE, MMM d, y'}}</label><br>
+              <p>{{item.category}}</p>
+            </ion-col>
+            <ion-col col-4 text-right class="currency">
+              <label class="amount amountIncome"><b>{{item.amount | currency:'CAD':true}}</b></label>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

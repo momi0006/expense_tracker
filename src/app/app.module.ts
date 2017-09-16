@@ -7,24 +7,54 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
+
+import { ExpensesComponent } from '../components/expenses/expenses';
+import { BalanceComponent } from '../components/balance/balance';
+import { AddBalanceExpensePage } from '../pages/add-balance-expense/add-balance-expense';
+import { EditBalancePage } from '../pages/edit-balance/edit-balance';
+import { OrderbyPipe} from "../pipes/orderby/orderby";
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAuYQOFcAyv4kmhsMXXJD7rtPDSf-SkrhM",
+  authDomain: "devlift-5206b.firebaseapp.com",
+  databaseURL: "https://devlift-5206b.firebaseio.com",
+  storageBucket: "devlift-5206b.appspot.com",
+  messagingSenderId: '6935491056'
+};
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ExpensesComponent,
+    AddBalanceExpensePage,
+    OrderbyPipe,
+    BalanceComponent,
+    EditBalancePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AddBalanceExpensePage,
+    EditBalancePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Facebook
   ]
 })
 export class AppModule {}

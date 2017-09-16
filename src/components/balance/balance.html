@@ -1,0 +1,29 @@
+<ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-12 col-sm-12 col-md-8 class="center">
+        <ion-list class="centerList">
+          <ion-item no-padding class="text">
+            <ion-row>
+              <ion-col text-center class="currency">
+                <label style="font-size:3rem">Balance</label><br>
+                <label style="font-size: 4rem; line-height:2"
+                [ngStyle]="{'color': balance() > 0 ? 'green' : 'red' }"><b>{{balance() | currency:'CAD':true}}</b></label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center col-6 class="currency">
+                <label style="font-size: 2rem; color: green"><b>{{totalIncome() | currency:'CAD':true}}</b></label><br>
+                <label>Income</label>
+              </ion-col>
+              <ion-col text-center col-6 class="currency">
+                <label style="font-size: 2rem; color:red"><b>{{totalExpense() | currency:'CAD':true}}</b></label><br>
+                <label>Expense</label>
+              </ion-col>
+            
+              
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>

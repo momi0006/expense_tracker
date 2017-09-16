@@ -1,0 +1,80 @@
+expenses {
+    @media screen and (max-width: 575px) { 
+        label.desc{
+            font-size: 1.8rem;
+        }
+        label.amount{
+            font-size: 1.5rem;
+            line-height: 3.6;
+            color: white;
+            padding: 1rem 0.5rem;
+            background-color: red;
+        }
+        label.amountIncome{
+            background-color: green;
+        }
+        
+    }
+    @media screen and (min-width: 576px) { 
+        label.desc{
+            font-size: 1.8rem;
+        }
+        label.amount{
+            font-size: 1.5rem;
+            line-height: 3.6;
+            color: white;
+            padding: 1rem 0.5rem;
+            background-color: red;
+        }
+        label.amountIncome{
+            background-color: green;
+        }
+        
+    }
+        
+    @media screen and (min-width: 768px) { 
+        .desc{
+            font-size: 1.8rem;
+        }
+        label.amount{
+            font-size: 2rem; 
+            line-height:2.7; 
+            color: white; 
+            padding: 1rem 2rem;
+        }
+        label.amountIncome{
+            background-color: green;
+        }
+    }
+
+    @media screen and (min-width: 992px) { 
+        label.desc{
+            font-size: 2rem;
+        }
+        label.amount{
+            font-size: 2rem; 
+            line-height:2.7; 
+            color: white; 
+            padding: 1rem 2rem;
+        }
+        label.amountIncome{
+            background-color: green;
+        }
+    }
+        
+    @media screen and (min-width: 1200px) { 
+        label.desc{
+            font-size: 2rem;
+        }
+
+        label.amount{
+            font-size: 2rem; 
+            line-height:2.7; 
+            color: white; 
+            padding: 1rem 2rem;
+        }
+        label.amountIncome{
+            background-color: green;
+        }
+    }
+}
