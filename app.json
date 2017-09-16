@@ -1,0 +1,7 @@
+{
+    "name": "Expense Tracker",
+    "description": "Track your spending, income and check for balance.",
+    "repository": "https://github.com/momi0006/expense_tracker.git",
+    "logo": "https://github.com/momi0006/resume/blob/gh-pages/img/main-image.jpg",
+    "keywords": ["ionic3", "heroku", "expense", "tracker"]
+}
